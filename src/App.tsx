@@ -1,10 +1,10 @@
 import { Navbar } from "./components/molecules/Navbar";
-import { Products } from "./pages/Products";
+import { AppRoutes } from "./routes/app.routes";
 
 function App() {
   return (
     <div>
-      <Products />
+      <AppRoutes />
       <Navbar />
     </div>
   );

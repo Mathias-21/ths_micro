@@ -20,12 +20,18 @@ export const AreaIcon = styled.div`
   /* background-color: #f0f; */
 `;
 
-export const Icon = styled.div`
+interface Props {
+  isActive: boolean;
+}
+
+export const Icon = styled.div<Props>`
   min-width: 22px;
   min-height: 22px;
   width: 22px;
   height: 22px;
-  background-color: #f00;
+  background-color: ${({ isActive }) => (isActive ? "#f00" : "#ccc")};
 `;
 
-export const NamePage = styled.p``;
+export const NamePage = styled.p<Props>`
+  margin-top: 3px;
+`;
