@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
-import {
-  AreaContents,
-  AreaInputButton,
-  Button,
-  Container,
-  Input,
-  Item,
-} from "./styles";
+import { AreaContents, Button, Container, Input, Item } from "./styles";
 import { Text } from "../../components/atoms/Text";
+import { ModalAddProduct } from "../../components/organisms/ModalAddProduct";
 
 export function Products() {
   const [products, setProducts] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     api.get("/products").then((data) => {
@@ -26,10 +21,14 @@ export function Products() {
         Produtos
       </Text>
       <AreaContents>
-        <AreaInputButton>
-          <Input type="text" placeholder="Buscar produto" />
-          <Button>+</Button>
-        </AreaInputButton>
+        <Input type="text" placeholder="Buscar produto" />
+        <Button
+          onClick={() => {
+            setModalIsOpen(true);
+          }}
+        >
+          +
+        </Button>
         {products.map((item: any) => (
           <Item key={item.id}>
             <Text style={{ width: "auto" }}>{item.name}</Text>
@@ -39,6 +38,7 @@ export function Products() {
           </Item>
         ))}
       </AreaContents>
+      <ModalAddProduct visible={modalIsOpen} setIsVisible={setModalIsOpen} />
     </Container>
   );
 }
