@@ -3,10 +3,12 @@ import styled, { css } from "styled-components";
 interface Props {
   variant: string;
   color: string;
+  textAlign: string;
+  weight: number;
 }
 
 export const Container = styled.div<Props>`
-  width: 100%;
+  width: auto;
   color: ${({ color }) => color};
   ${({ variant }) =>
     ({
@@ -14,7 +16,12 @@ export const Container = styled.div<Props>`
         font-size: 14px;
       `,
       title: css`
-        font-size: 18px;
+        font-size: 20px;
+      `,
+      subtitle: css`
+        font-size: 16px;
       `,
     }[variant])}
+  text-align: ${({ textAlign }) => textAlign};
+  font-weight: ${({ weight }) => weight};
 `;
